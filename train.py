@@ -4,11 +4,17 @@
 import copy
 import logging
 import os
+os.environ['HYDRA_FULL_ERROR'] = '1'
+os.environ['TORCH_CUDA_ARCH_LIST'] = '8.9'
 from pathlib import Path
 
 import hydra
 import pytorch_lightning as pl
 import torch
+import torch.backends.cudnn as cudnn
+cudnn.benchmark = True
+torch.set_float32_matmul_precision('high')
+
 import yaml
 from hydra.core.hydra_config import HydraConfig
 from hydra.utils import instantiate, to_absolute_path
@@ -83,7 +89,7 @@ def load_model(config):
     return model, (load_pretrained is not None)
 
 
-@hydra.main(config_path="./config", config_name="config")
+@hydra.main(config_path="./config", config_name="config", version_base=None)
 def main(cfg):
     if utils.ddp.is_rank_zero():
         exp_name = HydraConfig().get().run.dir

@@ -1,8 +1,8 @@
 train:
     dl_opts:
-        num_workers: 8
+        num_workers: 6
         shuffle: true
-        batch_size: 16
+        batch_size: 8
     dataset:
         _target_: datasets.WSJ0_mix
         path: ${path.datasets.wsj0_mix}
@@ -11,12 +11,12 @@ train:
         cut: max
         split: train
         max_len_s: 5
-        max_n_samples: null
+        max_n_samples: 1700
 val:
     dl_opts:
-        num_workers: 8
+        num_workers: 6
         shuffle: false
-        batch_size: 16
+        batch_size: 4
     dataset:
         _target_: datasets.WSJ0_mix
         path: ${path.datasets.wsj0_mix}
@@ -25,12 +25,12 @@ val:
         cut: max
         split: val
         max_len_s: null
-        max_n_samples: null
+        max_n_samples: 350
 test:
     dl_opts:
-        num_workers: 8
+        num_workers: 6
         shuffle: false
-        batch_size: 16
+        batch_size: 4
     dataset:
         _target_: datasets.WSJ0_mix
         path: ${path.datasets.wsj0_mix}
@@ -39,36 +39,36 @@ test:
         cut: max
         split: test
         max_len_s: null
-        max_n_samples: null
+        max_n_samples: 350
 
-libri-clean:
-    dl_opts:
-        num_workers: 8
-        shuffle: false
-        batch_size: 16
-    dataset:
-        _target_: datasets.WSJ0_mix
-        path: data/LibriMix
-        n_spkr: ${model.n_speakers}
-        fs: ${model.fs}
-        cut: max
-        split: libri2mix_test
-        max_len_s: null
-        max_n_samples: null
-        mix_dir: mix_clean
+# libri-clean:
+#     dl_opts:
+#         num_workers: 8
+#         shuffle: false
+#         batch_size: 16
+#     dataset:
+#         _target_: datasets.WSJ0_mix
+#         path: data/LibriMix
+#         n_spkr: ${model.n_speakers}
+#         fs: ${model.fs}
+#         cut: max
+#         split: libri2mix_test
+#         max_len_s: null
+#         max_n_samples: null
+#         mix_dir: mix_clean
 
-libri-noisy:
-    dl_opts:
-        num_workers: 8
-        shuffle: false
-        batch_size: 16
-    dataset:
-        _target_: datasets.WSJ0_mix
-        path: data/LibriMix
-        n_spkr: ${model.n_speakers}
-        fs: ${model.fs}
-        cut: max
-        split: libri2mix_test
-        max_len_s: null
-        max_n_samples: null
-        mix_dir: mix_both
+# libri-noisy:
+#     dl_opts:
+#         num_workers: 8
+#         shuffle: false
+#         batch_size: 16
+#     dataset:
+#         _target_: datasets.WSJ0_mix
+#         path: data/LibriMix
+#         n_spkr: ${model.n_speakers}
+#         fs: ${model.fs}
+#         cut: max
+#         split: libri2mix_test
+#         max_len_s: null
+#         max_n_samples: null
+#         mix_dir: mix_both

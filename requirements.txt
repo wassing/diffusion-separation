@@ -1,0 +1,15 @@
+torchaudio
+pytorch-lightning>=1.0.0
+pyroomacoustics
+PyYAML
+rich
+tabulate
+librosa
+hydra-core
+fast-bss-eval
+hydra-joblib-launcher
+asteroid
+asteroid-filterbanks
+torch_ema
+onnxruntime
+huggingface_hub

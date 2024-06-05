@@ -29,10 +29,10 @@ trainer:
 datamodule:
     train:
         dl_opts:
-            batch_size: 6
+            batch_size: 3
     val:
         dl_opts:
-            batch_size: 5
+            batch_size: 2
     test:
         dl_opts:
-            batch_size: 5
+            batch_size: 2
